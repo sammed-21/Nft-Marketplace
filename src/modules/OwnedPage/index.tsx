@@ -24,7 +24,7 @@ const OwnedPage = () => {
     <div className="flex w-full flex-col">
       {notConnected && <EmptyState>Connect your wallet</EmptyState>}
       {loading && <EmptyState>Loading...</EmptyState>}
-      {empty && <EmptyState>You don't own any NFTs</EmptyState>}
+      {empty && <EmptyState>You don&apos;t own any NFTs</EmptyState>}
       {loaded && (
         <>
           {/* owned nft*/}
@@ -33,7 +33,7 @@ const OwnedPage = () => {
               <NFTCard nft={nft} className="mr-2 mb-2" key={nft.id} />
             ))}
           </div>
-         
+
           {ownedListedNFTs && ownedListedNFTs.length > 0 && (
             <>
               <div className="relative my-2 h-[1px] w-full flex-shrink-0 bg-black">
@@ -43,7 +43,7 @@ const OwnedPage = () => {
               </div>
             </>
           )}
-     
+
           <div className="flex flex-wrap">
             {ownedListedNFTs?.map((nft) => (
               <NFTCard nft={nft} className="mr-2 mb-2" key={nft.id} />

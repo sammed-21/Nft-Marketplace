@@ -3,12 +3,12 @@ import classNames from "classnames";
 import { BigNumber } from "ethers";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { toast } from "react-toastify";
 import useNFTMarket from "@/src/state/nft-market";
 import { NFT } from "@/src/state/nft-market/interfaces";
 import useSigner from "@/src/state/signer";
 import { ipfsToHTTPS } from "../helpers";
-import AddressAvatar from "./AddressAvatar";
 import SellPopup from "./SellPopup";
 
 type NFTMetadata = {
@@ -116,7 +116,7 @@ const NFTCard = (props: NFTCardProps) => {
       )}
     >
       {meta ? (
-        <img
+        <Image
           src={meta?.imageURL}
           alt={meta?.name}
           className="h-80 w-full object-cover object-center"
@@ -131,7 +131,6 @@ const NFTCard = (props: NFTCardProps) => {
         <span className="text-sm font-normal">
           {meta?.description ?? "..."}
         </span>
-        <AddressAvatar address={nft.owner} />
       </div>
       <button
         className="group flex h-16 items-center justify-center bg-black text-lg font-semibold text-white"

@@ -27,7 +27,7 @@ const config: HardhatUserConfig = {
     artifacts: "./artifacts",
     cache: "./cache",
     tests: "./test",
-    dependencies: "./node_modules/@openzeppelin/contracts",
+    
   },
 };
 

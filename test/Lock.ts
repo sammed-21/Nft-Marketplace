@@ -35,7 +35,7 @@ describe("NFTMarket", () => {
     it("should revert if price is zero", async () => {
       const tokenID = await createNFT(tokenURI);
       const transaction = nftMarket.listNFT(tokenID, 0);
-      await expect(transaction).to.be.revertedWith(
+      await expect(transaction).to.be.rejectedWith(
         "NFTMarket: price must be greater than 0"
       );
     });
@@ -43,7 +43,7 @@ describe("NFTMarket", () => {
     it("should revert if not called by the owner", async () => {
       const tokenID = await createNFT(tokenURI);
       const transaction = nftMarket.connect(signers[1]).listNFT(tokenID, 12);
-      await expect(transaction).to.be.revertedWith(
+      await expect(transaction).to.be.rejectedWith(
         "ERC721: transfer caller is not owner nor approved"
       );
     });
@@ -54,7 +54,7 @@ describe("NFTMarket", () => {
   describe("buyNFT", () => {
     it("should revert if NFT is not listed for sale", async () => {
       const transaction = nftMarket.buyNFT(9999);
-      await expect(transaction).to.be.revertedWith(
+      await expect(transaction).to.be.rejectedWith(
         "NFTMarket: nft not listed for sale"
       );
     });
@@ -62,7 +62,7 @@ describe("NFTMarket", () => {
     it("should revert if the amount of wei sent is not equal to the NFT price", async () => {
       const tokenID = await createAndListNFT(123);
       const transaction = nftMarket.buyNFT(tokenID, { value: 124 });
-      await expect(transaction).to.be.revertedWith(
+      await expect(transaction).to.be.rejectedWith(
         "NFTMarket: incorrect price"
       );
     });
@@ -110,7 +110,7 @@ describe("NFTMarket", () => {
   describe("cancelListing", () => {
     it("should revert if the NFT is not listed for sale", async () => {
       const transaction = nftMarket.cancelListing(9999);
-      await expect(transaction).to.be.revertedWith(
+      await expect(transaction).to.be.rejectedWith(
         "NFTMarket: nft not listed for sale"
       );
     });
@@ -118,7 +118,7 @@ describe("NFTMarket", () => {
     it("should revert if the caller is not the seller of the listing", async () => {
       const tokenID = await createAndListNFT(123);
       const transaction = nftMarket.connect(signers[1]).cancelListing(tokenID);
-      await expect(transaction).to.be.revertedWith(
+      await expect(transaction).to.be.rejectedWith(
         "NFTMarket: you're not the seller"
       );
     });
@@ -143,7 +143,7 @@ describe("NFTMarket", () => {
   describe("withdrawFunds", () => {
     it("should revert if called by a signer other than the owner", async () => {
       const transaction = nftMarket.connect(signers[1]).withdrawFunds();
-      await expect(transaction).to.be.revertedWith(
+      await expect(transaction).to.be.rejectedWith(
         "Ownable: caller is not the owner"
       );
     });
@@ -166,7 +166,7 @@ describe("NFTMarket", () => {
 
     it("should revert if contract balance is zero", async () => {
       const transaction = nftMarket.withdrawFunds();
-      await expect(transaction).to.be.revertedWith(
+      await expect(transaction).to.be.rejectedWith(
         "NFTMarket: balance is zero"
       );
     });
