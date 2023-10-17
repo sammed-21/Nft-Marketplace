@@ -1,7 +1,7 @@
 import useSigner from "@/src/state/signer";
 
 const ConnectButton = () => {
-  const { loading, connectWallet } = useSigner();
+  const { address, loading, connectWallet } = useSigner();
 
   return (
     <button
@@ -9,7 +9,15 @@ const ConnectButton = () => {
       onClick={connectWallet}
       disabled={loading}
     >
-      {loading ? "busy..." : "Connect wallet"}
+      {address ? (
+        <>
+          <span>
+            Connected: {address.slice(0, 4)}...{address.slice(-4)}
+          </span>
+        </>
+      ) : (
+        <>{loading ? "Busy..." : "Connect Wallet"}</>
+      )}
     </button>
   );
 };
