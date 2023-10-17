@@ -3,9 +3,9 @@ import { BigNumber, Contract, ethers } from "ethers";
 import { CreationValues } from "@/src/modules/CreationPage/CreationForm";
 // import useSigner from "..//src/state/signer";
 import useSigner from '../../state/signer'
-import NFT_MARKET from '../../../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
+ 
 // import NFT_MARKET from "artifacts/contracts/NFTMarket.sol/NFTMarket.json";
-import { NFT_MARKET_ADDRESS } from "./config";
+import { NFT_MARKET_ADDRESS,NFT_MARKET } from "./config";
 import { NFT } from "./interfaces";
 import useListedNFTs from "./useListedNFTs";
 import useOwnedListedNFTs from "./useOwnedListedNFTs";
@@ -13,8 +13,8 @@ import useOwnedNFTs from "./useOwnedNFTs";
 
 const useNFTMarket = () => {
   const { signer } = useSigner();
-  console.log(signer)
-  const nftMarket = new Contract(NFT_MARKET_ADDRESS, NFT_MARKET.abi, signer);
+  
+  const nftMarket = new Contract(NFT_MARKET_ADDRESS, NFT_MARKET, signer);
    const ownedNFTs = useOwnedNFTs();
   const ownedListedNFTs = useOwnedListedNFTs();
   const listedNFTs = useListedNFTs();

@@ -117,6 +117,9 @@ const NFTCard = (props: NFTCardProps) => {
     >
       {meta ? (
         <Image
+          width={500}
+          height={500}
+          priority
           src={meta?.imageURL}
           alt={meta?.name}
           className="h-80 w-full object-cover object-center"
