@@ -1,0 +1,39 @@
+/home/sammed/projects/nft-marketplace/tmp/f0fded9a20504841a38696807
+enter the buffer
+this is buffer <Buffer 89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 05 00 00 00 02 d0 08 02 00 00 00 40 1f 4a 01 00 00 00 09 70 48 59 73 00 00 0e c4 00 00 0e c4 01 ... 1071621 more bytes>
+thisis arraybuffer ArrayBuffer {
+  [Uint8Contents]: <89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 05 00 00 00 02 d0 08 02 00 00 00 40 1f 4a 01 00 00 00 09 70 48 59 73 00 00 0e c4 00 00 0e c4 01 95 2b 0e 1b 00 00 ff ff 49 44 41 54 78 9c c4 bd d7 96 24 b9 91 20 0a c0 dd 23 52 54 57 2b 36 97 73 ce dc 7d d8 7d b9 fb ff bf 33 0f 77 c8 99 6e b2 d9 ... 1071571 more bytes>,
+  byteLength: 1071671
+}
+this is file Blob { size: 1071671, type: 'image' }
+{
+  name: [ 'nft' ],
+  description: [ 'nft is non fungile token' ],
+  image: [
+    PersistentFile {
+      _events: [Object: null prototype],
+      _eventsCount: 1,
+      _maxListeners: undefined,
+      lastModifiedDate: 2023-10-17T04:49:20.349Z,
+      filepath: '/home/sammed/projects/nft-marketplace/tmp/f0fded9a20504841a38696807',
+      newFilename: 'f0fded9a20504841a38696807',
+      originalFilename: '51833b46c1655fc3565407db9d38904aad183b89382cc7807b327eac5e2d95e6@Carousel.png',
+      mimetype: 'image/png',
+      hashAlgorithm: false,
+      size: 1071671,
+      _writeStream: [WriteStream],
+      hash: null,
+      [Symbol(kCapture)]: false
+    }
+  ]
+}
+According to ERC721 Metadata JSON Schema 'image' must have 'image/*' mime type.
+
+For better interoperability we would highly recommend storing content with different mime type under 'properties' namespace e.g. `properties: { video: file }` and using 'image' field for storing a preview image for it instead.
+
+For more context please see ERC-721 specification https://eips.ethereum.org/EIPS/eip-721
+Token {
+  ipnft: 'bafyreiat3whkbhsl3dzwixii2szlcjzps6cq7nllthih7zxl34qu33pyxq',
+  url: 'ipfs://bafyreiat3whkbhsl3dzwixii2szlcjzps6cq7nllthih7zxl34qu33pyxq/metadata.json'
+}
+3

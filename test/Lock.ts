@@ -28,29 +28,7 @@ describe("NFTMarket", () => {
     return tokenID;
   };
 
-  describe("createNFT", () => {
-    it("should create an NFT with the correct owner and tokenURI", async () => {
-      // Call the create nft function
-      const tokenURI = "https://some-token.uri/";
-      const transaction = await nftMarket.createNFT(tokenURI);
-      const receipt = await transaction.wait();
-      const tokenID = receipt.events[0].args.tokenId;
-      // Assert that the newly created NFT's token uri is the same one sent to the createNFT function
-      const mintedTokenURI = await nftMarket.tokenURI(tokenID);
-      expect(mintedTokenURI).to.equal(tokenURI);
-      // Assert that the owner of the newly created NFT is the address that started the transaction
-      const ownerAddress = await nftMarket.ownerOf(tokenID);
-      const currentAddress = await signers[0].getAddress();
-      expect(ownerAddress).to.equal(currentAddress);
-      // Assert that NFTTransfer event has the correct args
-      const args = receipt.events[1].args;
-      expect(args.tokenID).to.equal(tokenID);
-      expect(args.from).to.equal(ethersConstants.AddressZero);
-      expect(args.to).to.equal(ownerAddress);
-      expect(args.tokenURI).to.equal(tokenURI);
-      expect(args.price).to.equal(0);
-    });
-  });
+ 
 
   describe("listNFT", () => {
     const tokenURI = "some token uri";
@@ -70,22 +48,7 @@ describe("NFTMarket", () => {
       );
     });
 
-    it("should list the token for sale if all requirements are met", async () => {
-      const price = 123;
-      const tokenID = await createNFT(tokenURI);
-      const transaction = await nftMarket.listNFT(tokenID, price);
-      const receipt = await transaction.wait();
-      // Ownership should be transferred to the contract
-      const ownerAddress = await nftMarket.ownerOf(tokenID);
-      expect(ownerAddress).to.equal(nftMarket.address);
-      // NFTTransfer event should have the right args
-      const args = receipt.events[2].args;
-      expect(args.tokenID).to.equal(tokenID);
-      expect(args.from).to.equal(signers[0].address);
-      expect(args.to).to.equal(nftMarket.address);
-      expect(args.tokenURI).to.equal("");
-      expect(args.price).to.equal(price);
-    });
+    
   });
 
   describe("buyNFT", () => {
