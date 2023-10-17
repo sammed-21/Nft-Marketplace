@@ -1,8 +1,10 @@
 import { TransactionResponse } from "@ethersproject/abstract-provider";
 import { BigNumber, Contract, ethers } from "ethers";
 import { CreationValues } from "@/src/modules/CreationPage/CreationForm";
-import useSigner from "@/src/state/signer";
-import NFT_MARKET from "@/artifacts/contracts/NFTMarket.sol/NFTMarket.json";
+// import useSigner from "..//src/state/signer";
+import useSigner from '../../state/signer'
+import NFT_MARKET from '../../../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
+// import NFT_MARKET from "artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 import { NFT_MARKET_ADDRESS } from "./config";
 import { NFT } from "./interfaces";
 import useListedNFTs from "./useListedNFTs";
